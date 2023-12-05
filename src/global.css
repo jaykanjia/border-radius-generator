@@ -1,0 +1,195 @@
+:root {
+	--primary-color: #0064e0;
+	--secendary-color: #4600b6;
+	--bg-color: #111;
+	--fg-color: #fff;
+	--slider-height: 0px;
+	--thumb-size: 10px;
+	--box-size: 500px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: var(--bg-color);
+	color: var(--fg-color);
+	font-family: sans-serif;
+}
+
+.sr-only {
+	height: 0;
+	width: 0;
+	display: block;
+	overflow: hidden;
+	user-select: none;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -50;
+}
+
+.main {
+	gap: 2rem;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+.slider_container {
+	position: relative;
+	width: min(var(--box-size), 100%);
+	aspect-ratio: 1/1;
+	border: 1px dotted var(--fg-color);
+}
+
+#shape {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	background-color: var(--secendary-color);
+	/* background-image: linear-gradient(
+		45deg,
+		var(--secendary-color) 0%,
+		var(--primary-color) 100%
+	); */
+}
+
+.slider_group {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 10;
+}
+.slider_group:nth-child(odd) {
+	transform-origin: left;
+}
+.slider_group:nth-child(1) {
+	top: 0;
+	left: 0;
+}
+.slider_group:nth-child(2) {
+	bottom: 0;
+	right: 0;
+	transform-origin: right;
+	transform: translateY(50%) rotate(90deg);
+}
+.slider_group:nth-child(3) {
+	bottom: 0;
+	left: 0;
+	transform: translateY(50%);
+}
+.slider_group:nth-child(4) {
+	top: 0;
+	left: 0;
+	transform-origin: left;
+	transform: translateY(-50%) rotate(90deg);
+}
+
+.flex {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.outer {
+	gap: 1rem;
+}
+.inner {
+	align-items: stretch;
+}
+.title {
+	text-align: center;
+	min-width: max-content;
+	text-transform: capitalize;
+}
+#output {
+	min-width: fit-content;
+	padding: 1rem 1.2rem;
+	background-color: var(--fg-color);
+	color: black;
+	outline: none;
+	border: none;
+}
+button {
+	min-width: fit-content;
+	padding: 1rem 2rem;
+	background-color: var(--primary-color);
+	color: white;
+	outline: none;
+	border: none;
+}
+
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"] {
+	width: 100%;
+	-webkit-appearance: none;
+	appearance: none;
+	background: transparent;
+	cursor: pointer;
+	height: var(--slider-height);
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+	outline: none;
+}
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+	background-color: var(--fg-color);
+	height: var(--slider-height);
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--fg-color);
+	width: var(--thumb-size);
+	aspect-ratio: 1/1;
+	transform: translateY(-50%);
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 0.125rem;
+}
+
+/******** Firefox styles ********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+	background-color: var(--fg-color);
+	height: var(--slider-height);
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: var(--fg-color);
+	width: var(--thumb-size);
+	aspect-ratio: 1/1;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 0.125rem;
+}
